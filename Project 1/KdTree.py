@@ -87,7 +87,7 @@ class Kdtree:
 		return (splitValue, (pointsLT, pointsGT))
 
 	def __split(self, value, sortedpoints, index):
-		#
+		#Split points into two sets based on value
 
 		if len(sortedpoints) == 0:
 			return [[],[]]
@@ -184,44 +184,48 @@ class Kdtree:
 		return retval
 
 if __name__ == '__main__':
-	import random, timeit
+	import random
+	from ast import literal_eval
 
-	MaxPoints = 1024
+	MaxPoints = 1200000
 	Xmax = 1280
 	Ymax = 1024
 
 	r = random.Random()
+	dataset = open('C:data set3.txt', 'r')
+
 	points = []
 
-	for i in range(0, MaxPoints):
-		point = (r.randint(0, Xmax), r.randint(0, Ymax))
-		points.append(point)
+	for i in dataset:
+		to_tup = literal_eval(i)
+		points.append(to_tup)
 
-	points = [(6, 1), (5, 5), (9, 6), (3, 6), (4, 9), (4, 0), (7, 9), (2, 9)]
-	print "building tree for points\n\t%s\n" % points	
+	#points = [(6, 1), (5, 5), (9, 6), (3, 6), (4, 9), (4, 0), (7, 9), (2, 9)]
+	#print "Building tree for points\n\t%s\n" % points	
 	
-	print " building the Tree."
+	print "Building the Tree."
+
 	tree = Kdtree(points)
 	print 'Done\n'
 
 
 	SrchPt = (r.randint(0, Xmax), r.randint(0, Ymax))
 	
-	SrchPt = (5, 4)
+	#SrchPt = (5, 4)
 	
 	print "Nearest neighbour to %s in the the tree is: " %(SrchPt,)
 
 	NearestPt = tree.NearestNeighbor(SrchPt)
-	sys.stderr.write('%s\n' % (NearestPt,))
+	print '%s\n' % (NearestPt,)
 
 	NumTimes = 1000000
 	stmt = 'tree.NearestNeighbor(%s)' % (SrchPt,)
 	setup = 'from __main__ import Kdtree; tree = Kdtree(%s)' % points
-	print "Timing search... "
-	timer = timeit.Timer(stmt, setup)
-	sec = timer.timeit(NumTimes)
+	#print "Timing search... "
+	#timer = timeit.Timer(stmt, setup)
+	#sec = timer.timeit(NumTimes)
 
-	print "done (%fs/search)\n" % (sec/NumTimes,)
+	#print "done (%fs/search)\n" % (sec/NumTimes,)
 
 
 
