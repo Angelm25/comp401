@@ -209,17 +209,17 @@ if __name__ == '__main__':
 	print 'Done\n'
 
 
-	SrchPt = (r.randint(0, Xmax), r.randint(0, Ymax))
+	PointSearch = (r.randint(0, Xmax), r.randint(0, Ymax))
 	
-	#SrchPt = (5, 4)
+	#PointSearch = (5, 4)
 	
-	print "Nearest neighbour to %s in the the tree is: " %(SrchPt,)
+	print "Nearest neighbour to %s in the the tree is: " %(PointSearch,)
 
-	NearestPt = tree.NearestNeighbor(SrchPt)
+	NearestPt = tree.NearestNeighbor(PointSearch)
 	print '%s\n' % (NearestPt,)
 
 	NumTimes = 1000000
-	stmt = 'tree.NearestNeighbor(%s)' % (SrchPt,)
+	stmt = 'tree.NearestNeighbor(%s)' % (PointSearch,)
 	setup = 'from __main__ import Kdtree; tree = Kdtree(%s)' % points
 	#print "Timing search... "
 	#timer = timeit.Timer(stmt, setup)
