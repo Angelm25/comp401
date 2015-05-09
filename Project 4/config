@@ -6,3 +6,6 @@
 	symlinks = false
 	ignorecase = true
 	hideDotFiles = dotGitOnly
+[remote "origin"]
+	url = https://github.com/Angelm25/Project_4.git
+	fetch = +refs/heads/*:refs/remotes/origin/*
