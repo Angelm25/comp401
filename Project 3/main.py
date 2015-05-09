@@ -3,7 +3,7 @@ import Decision_Tree
 def main():
     #Insert input file
 
-    file = open('C:\Users\Mejia_000\Documents\Angels work\Spring 2015\COMP 401\Decision tree\VoteTrain.csv')
+    file = open('VoteTrain.csv')
     #how the machine will learn.
 
     target = "class"
@@ -30,7 +30,7 @@ def main():
     file.write("Info = [[]]\n")
     
     #tests
-    file.write("f = open('C:\Users\Mejia_000\Documents\Angels work\Spring 2015\COMP 401\Decision tree\Voting.csv')\n")
+    file.write("f = open('Voting.csv')\n")
     
     #get Info
     file.write("for line in f:\n\tline = line.strip(\"\\r\\n\")\n\tInfo.append(line.split(','))\n")
